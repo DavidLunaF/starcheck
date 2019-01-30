@@ -1,0 +1,125 @@
+$bubble-d: 4.5rem; // bubble diameter
+$bubble-r: .5*$bubble-d; // bubble-radius
+
+@mixin bubble($ext) {
+  transform: scale(1);
+  border-color: #cc8ef5;
+  border-width: $ext;
+}
+
+.center {
+  margin: auto;
+  width: 0%;
+}
+
+.star {
+  color: #c2c2c2;
+  margin: 0 auto;
+  font-size: 50px;
+  width: 50px;
+  display: block;
+}
+
+[class='toggle-star'] {
+  position: absolute;
+  left: -100vw;
+
+  &:checked+label {
+    color: gold;
+    will-change: transform;
+    animation: star 0.9s ease-in-out;
+
+    .circle {
+
+      &:before,
+      &:after {
+        display: block;
+        content: '';
+        position: relative;
+        left: 10vw;
+        top: -2vw;
+        border-radius: 50%;
+        margin: -2.25rem;
+        width: .9rem;
+        height: .9rem;
+        opacity: .8;
+      }
+
+      &:after {
+        background-color: rgb(223, 92, 41);
+        z-index: 2;
+        left: 6vw;
+        top: 1.5vw;
+      }
+
+      &:before {
+        background-color: #0ff;
+        z-index: -3;
+        left: 5vw;
+        top: 2vw;
+      }
+
+      animation: circle 0.5s cubic-bezier(.66, .16, .98, .45);
+      animation-delay: 0.5s
+    }
+
+
+  }
+}
+
+.circle {
+  position: relative;
+  z-index: -1;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: rgb(226, 26, 199);
+  opacity: 0;
+}
+
+
+label .star {
+  align-self: center;
+  position: relative;
+  color: #aab8c2;
+  font-size: 2em;
+  cursor: pointer;
+
+}
+
+@keyframes star {
+  0% {
+    opacity: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: rotate(1080deg);
+    -moz-transform: rotate(1080deg);
+    -o-transform: rotate(1080deg);
+    -ms-transform: rotate(1080deg);
+    transform: rotate(1080deg);
+  }
+
+}
+
+
+@keyframes circle {
+  0% {
+    opacity: 0;
+    transform: scale(.1)
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(.5)
+  }
+
+  100% {
+    opacity: 0.1;
+    transform: scale(1.5)
+  }
+}
